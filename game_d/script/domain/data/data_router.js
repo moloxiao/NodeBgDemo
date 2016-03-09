@@ -52,11 +52,12 @@ router.get( '/pay/dayreport', function(req, res) {
 router.get( '/event/dayreport/fishinfo', function(req, res) {
 	var day = noderice.GetDateNum(0);
 	var key_day = day;
+	var room_id = noderice.GetDateNum(1);
 	if(req.query.day != undefined && req.query.day != null && req.query.day.length == 8) {
 		day=req.query.day;
 		key_day = day;
 	}
-	(function(key_day){
+	(function(key_day, room_id){
 		event_logic.getFishinfo(day, function(fishinfo) {
 			res.render('data/event/dayreport/fishinfo', { key_day : key_day, fishinfo : fishinfo});
 		});

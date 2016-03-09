@@ -5,7 +5,7 @@
 var dashboard_data = require('../../../data/dashboard/dashboard_data.js');
 var gamelogic = require('../../gamelogic/gamelogic.js');
 
-function getFishinfo(day, callback) {
+function getFishinfo(day, room_id, callback) {
 	dashboard_data.getEventUserInfo('fishinfo', day, function (success, body) {
 		var fish_infos = [];
 		if(success ) {
@@ -23,7 +23,9 @@ function getFishinfo(day, callback) {
 					catch_times : bodyObj[i]["catch_times"],
 					catch_times_user : bodyObj[i]["catch_times_user"]
 				}
-				fish_infos[i] = item;
+				if (room_id == 0 || room_id != 0 && room_id == bodyObj[i]["room_id"]) {
+					fish_infos[i] = item;
+				};				
 			}
 		}
 		callback(fish_infos);

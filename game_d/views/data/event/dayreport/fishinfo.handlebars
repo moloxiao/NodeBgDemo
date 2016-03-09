@@ -1,7 +1,15 @@
 <p><a href="/" role="button">首页</a>-><a href="/map/data" role="button">数据报表</a>-><a href="/map/data/event" role="button">游戏分析</a>->鱼群统计</p>
 <div class="page-header">
 	<form class="form-search">
-	<p>day[YYYYMMDD]</p><input type="text" value={{key_day}} name="day" class="search-query">
+	<p>day[YYYYMMDD]</p>
+	<input type="text" value={{key_day}} name="day" class="search-query">
+	<select id="q_room_id" name="room_id" class="search-query" data-size="5" >
+	        <option value='0'>所有房间</option>
+					<option value='1'>1倍房间</option>
+					<option value='2'>30倍房间</option>
+					<option value='3'>100倍房间</option>
+					<option value='4'>300倍房间</option>
+	 </select>
 	<button type="submit" class="btn btn-primary">查询</button>
 	</form>
 </div>
