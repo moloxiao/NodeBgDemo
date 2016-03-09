@@ -57,8 +57,8 @@ router.get( '/event/dayreport/fishinfo', function(req, res) {
 		day=req.query.day;
 		key_day = day;
 	}
-	(function(key_day, room_id){
-		event_logic.getFishinfo(day, function(fishinfo) {
+	(function(key_day){
+		event_logic.getFishinfo(day, room_id, function(fishinfo) {
 			res.render('data/event/dayreport/fishinfo', { key_day : key_day, fishinfo : fishinfo});
 		});
 	})(key_day);
