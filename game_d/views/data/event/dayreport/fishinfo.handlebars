@@ -23,8 +23,11 @@
 				<th>鱼序号</th>
 				<th>创建/次</th>
 				<th>击中/次</th>
-				<th>消耗/金币</th>
 				<th>捕获/次</th>
+				<th>捕获占比</th>
+				<th>消耗/金币</th>
+				<th>获得/金币</th>
+				<th>系统回收/金币</th>
 				<th>用户捕获/次</th>
 			</tr>
 		</thead>
@@ -37,8 +40,11 @@
 					<td>{{fish_id}}</td>
 					<td>{{create_times}}</td>
 					<td>{{hit_times}}</td>
-					<td>{{hit_moneys}}</td>
 					<td>{{catch_times}}</td>
+					<td>{{catch_per}}</td>
+					<td>{{hit_moneys}}</td>
+					<td>{{catch_moneys}}</td>
+					<td>{{recovery_moneys}}</td>
 					<td>{{catch_times_user}}</td>
 				<tr>
 			{{/each}}
