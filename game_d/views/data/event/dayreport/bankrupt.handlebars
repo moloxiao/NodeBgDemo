@@ -15,6 +15,13 @@
 				<th>破产次数</th>
 				<th>领取次数</th>
 				<th>领取占比</th>
+				<th>破产用户</th>
+				<th>留存用户</th>
+				<th>留存占比</th>
+				<th>免费用户</th>
+				<th>免费占比</th>
+				<th>免费留存用户</th>
+				<th>免费留存占比</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,12 +33,22 @@
 					<td>{{nums}}</td>
 					<td>{{get_nums}}</td>
 					<td>{{per}}</td>
+					<td>{{user}}</td>
+					<td>{{old_user}}</td>
+					<td>{{old_user_per}}</td>
+					<td>{{freepay_user}}</td>
+					<td>{{freepay_user_per}}</td>
+					<td>{{freepay_old_user}}</td>
+					<td>{{freepay_old_user_per}}</td>
 				<tr>
 			{{/each}}
 		</tbody>
 	</table>
 	<a download="fk.csv" href="#" onclick="return ExcellentExport.csv(this, 'datatable');">导出为:CSV</a>
 	<div class="alert alert-info" role="alert">
+				<p>留存用户=破产中的留存用户  免费用户=破产中的免费用户  免费留存用户=破产中的免费留存用户</p>
+				<p>留存占比=留存用户/破产用户  免费占比=免费用户/破产用户  免费留存占比=免费留存用户/破产用户</p>
+				<p>目前出的包client端统计存在错误，破产领取统计都为第一次领取</p>
 				<p>破产没有单列用户数，因为每个用户在每个破产序列上只能出现1次。因此次数和用户数一致。</p>
 				<p><strong>第几次破产</strong> 可能的取值范围为[1,2,3]。</p>
 				<p>2016-02-29以前出的包client端统计存在错误，无论用户是第几次破产，均提交为第一次破产。</p>
