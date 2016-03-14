@@ -12,8 +12,10 @@
 				<th>序号</th>
 				<th>日期</th>
 				<th>抽奖类型</th>
-				<th>次数</th>
-				<th>用户数</th>
+				<th>总次数</th>
+				<th>总用户数</th>
+				<th>新增次数</th>
+				<th>新增用户数</th>
 				<th>奖励1</th>
 				<th>奖励2</th>
 				<th>奖励3</th>
@@ -30,6 +32,8 @@
 					<td>{{t_type}}</td>
 					<td>{{times}}</td>
 					<td>{{user_times}}</td>
+					<td>{{new_times}}</td>
+					<td>{{new_user_times}}</td>
 					<td>{{p_type_1_counts}}</td>
 					<td>{{p_type_2_counts}}</td>
 					<td>{{p_type_3_counts}}</td>
@@ -42,6 +46,7 @@
 	</table>
 	<a download="fk.csv" href="#" onclick="return ExcellentExport.csv(this, 'datatable');">导出为:CSV</a>
 	<div class="alert alert-info" role="alert">
+				<p>2016-03-14 增加新增用户数和新增用户抽奖次数统计</p>
 				<p>每种抽奖类型均包含六种奖励配置。表格显示为总共发送奖励的数量。</p>
 	</div>
 </div>
