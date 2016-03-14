@@ -191,6 +191,20 @@ router.get( '/event/dayreport/turrentlevelgroup', function(req, res) {
 	})(key_day);
 });
 
+router.get( '/event/dayreport/userlevelgroup', function(req, res) {
+	var day = noderice.GetDateNum(0);
+	var key_day = day;
+	if(req.query.day != undefined && req.query.day != null && req.query.day.length == 8) {
+		day=req.query.day;
+		key_day = day;
+	}
+	(function(key_day){
+		event_logic.getTurrentlevelgroup(day, function(turrentlevelgroupInfo) {
+			res.render('data/event/dayreport/userevelgroup', { key_day : key_day, userlevelgroupInfo : userlevelgroupInfo});
+		});
+	})(key_day);
+});
+
 router.get( '/userinfo/query', function(req, res) {
 	var key_user_id = '201';
 	var key_q_type = 'mo';

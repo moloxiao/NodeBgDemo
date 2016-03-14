@@ -368,3 +368,43 @@ function getTurrentlevelgroup(day, callback) {
 }
 
 exports.getTurrentlevelgroup = getTurrentlevelgroup;
+
+function getUsertlevelgroup(day, callback) {
+	dashboard_data.getEventUserInfo('Userlevelgroup', day, function (success, body) {
+		var infos = [];
+		if(success ) {
+			var bodyObj = JSON.parse(body);
+			var i = 0;
+			var allActivieUser = 0;
+			var allNewUsers = 0;
+			for(i=0; i<bodyObj.length;i++) {
+				allActivieUser = allActivieUser + parseInt(bodyObj[i]["active_user"]);
+				allNewUsers = allNewUsers + parseInt(bodyObj[i]["new_user"]);
+			}
+			var levelActivieUsers = 0;
+			var levelNewUsers = 0;
+			for(i=0; i<bodyObj.length;i++) {
+				levelActivieUsers = levelActivieUsers + parseInt(bodyObj[i]["active_user"]);
+				levelNewUsers = levelNewUsers + parseInt(bodyObj[i]["new_user"]);
+
+				var active_user_per = (parseFloat(bodyObj[i]["active_user"])*100/allActivieUser);
+				var new_user_per = parseFloat(bodyObj[i]["new_user"])*100/allNewUsers;
+				item = {
+					id : i+1,
+					day : bodyObj[i]["day"],
+					turrent_level : bodyObj[i]["user_level"],
+					active_user : bodyObj[i]["active_user"],
+					active_user_per : active_user_per.toFixed(4) + '%',
+					active_user_all_per : levelActivieUsers == 0 ? 0 : (parseFloat(levelActivieUsers)*100/allActivieUser).toFixed(2) + '%',
+					new_user : bodyObj[i]["new_user"],
+					new_user_per : new_user_per.toFixed(4) + '%',
+					new_user_all_per : levelNewUsers == 0 ? 0 : (parseFloat(levelNewUsers)*100/allNewUsers).toFixed(2) + '%'
+				}
+				infos[i] = item;
+			}
+		}
+		callback(infos);
+	});
+}
+
+exports.getUserlevelgroup = getUserlevelgroup;
