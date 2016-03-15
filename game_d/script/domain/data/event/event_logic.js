@@ -267,7 +267,8 @@ function getTurntable(day, callback) {
 				item = {
 					id : i+1,
 					day : bodyObj[i]["day"],
-					t_type : parseInt(bodyObj[i]["t_type"]) == 11 ? "新增用户抽奖" : "活跃用户抽奖",
+					t_type : getTurnTableTypeDesc(parseInt(bodyObj[i]["t_type"])),
+					statistics_type : parseInt(bodyObj[i]["t_type"]) == 11 ? "新增用户抽奖" : "活跃用户抽奖",
 					times : bodyObj[i]["times"],
 					user_times : bodyObj[i]["user_times"],
 					p_type_1_counts : bodyObj[i]["p_type_1_counts"],
