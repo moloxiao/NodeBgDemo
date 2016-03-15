@@ -48,7 +48,13 @@ function getBankrupt(day, callback) {
 					nums : bodyObj[i]["nums"],
 					get_nums : bodyObj[i]["get_nums"],
 					per : parseInt(bodyObj[i]["nums"]) == 0 ? '0%' :
-					 	(parseFloat(bodyObj[i]["get_nums"])*100/parseFloat(bodyObj[i]["nums"])).toFixed(2) + '%'
+					 	(parseFloat(bodyObj[i]["get_nums"])*100/parseFloat(bodyObj[i]["nums"])).toFixed(2) + '%',
+					new_user : bodyObj[i]["new_nums"],
+					new_user_per : parseInt(bodyObj[i]["new_nums"]) == 0 ? '0%' :
+					 	(parseFloat(bodyObj[i]["new_nums"])*100/parseFloat(bodyObj[i]["nums"])).toFixed(2) + '%',
+					new_get_nums : bodyObj[i]["new_get_nums"],
+					new_get_nums_per : parseInt(bodyObj[i]["new_get_nums"]) == 0 ? '0%' :
+					 	(parseFloat(bodyObj[i]["new_get_nums"])*100/parseFloat(bodyObj[i]["get_nums"])).toFixed(2) + '%'
 				}
 				infos[i] = item;
 			}
@@ -261,7 +267,7 @@ function getTurntable(day, callback) {
 				item = {
 					id : i+1,
 					day : bodyObj[i]["day"],
-					t_type : getTurnTableTypeDesc(parseInt(bodyObj[i]["t_type"])),
+					t_type : parseInt(bodyObj[i]["t_type"]) == 11 ? "新增用户抽奖" : "活跃用户抽奖",
 					times : bodyObj[i]["times"],
 					user_times : bodyObj[i]["user_times"],
 					p_type_1_counts : bodyObj[i]["p_type_1_counts"],
@@ -369,36 +375,28 @@ function getTurrentlevelgroup(day, callback) {
 
 exports.getTurrentlevelgroup = getTurrentlevelgroup;
 
-function getUsertlevelgroup(day, callback) {
-	dashboard_data.getEventUserInfo('Userlevelgroup', day, function (success, body) {
+function getUserlevelgroup(day, callback) {
+	dashboard_data.getEventUserInfo('exp/distribution', day, function (success, body) {
 		var infos = [];
 		if(success ) {
 			var bodyObj = JSON.parse(body);
-			var i = 0;
-			var allActivieUser = 0;
 			var allNewUsers = 0;
 			for(i=0; i<bodyObj.length;i++) {
-				allActivieUser = allActivieUser + parseInt(bodyObj[i]["active_user"]);
-				allNewUsers = allNewUsers + parseInt(bodyObj[i]["new_user"]);
+				allNewUsers = allNewUsers + parseInt(bodyObj[i]["new_nums"]);
 			}
-			var levelActivieUsers = 0;
+			var i = 0;
 			var levelNewUsers = 0;
 			for(i=0; i<bodyObj.length;i++) {
-				levelActivieUsers = levelActivieUsers + parseInt(bodyObj[i]["active_user"]);
-				levelNewUsers = levelNewUsers + parseInt(bodyObj[i]["new_user"]);
-
-				var active_user_per = (parseFloat(bodyObj[i]["active_user"])*100/allActivieUser);
-				var new_user_per = parseFloat(bodyObj[i]["new_user"])*100/allNewUsers;
+				var new_user_per = parseFloat(bodyObj[i]["new_nums"])*100/allNewUsers;
+				levelNewUsers = levelNewUsers + parseInt(bodyObj[i]["new_nums"]);
 				item = {
 					id : i+1,
 					day : bodyObj[i]["day"],
-					turrent_level : bodyObj[i]["user_level"],
-					active_user : bodyObj[i]["active_user"],
-					active_user_per : active_user_per.toFixed(4) + '%',
-					active_user_all_per : levelActivieUsers == 0 ? 0 : (parseFloat(levelActivieUsers)*100/allActivieUser).toFixed(2) + '%',
-					new_user : bodyObj[i]["new_user"],
-					new_user_per : new_user_per.toFixed(4) + '%',
-					new_user_all_per : levelNewUsers == 0 ? 0 : (parseFloat(levelNewUsers)*100/allNewUsers).toFixed(2) + '%'
+					exp_level : bodyObj[i]["exp_level"],
+					active_user : bodyObj[i]["nums"],
+					new_user : bodyObj[i]["new_nums"],
+					new_user_per : new_user_per.toFixed(2) + '%',
+					new_user_all_per : levelNewUsers == 0 ? 0 : (parseFloat(levelNewUsers)*100/allNewUsers).toFixed(2) + '%' 
 				}
 				infos[i] = item;
 			}

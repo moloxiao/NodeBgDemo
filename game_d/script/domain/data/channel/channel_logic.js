@@ -59,17 +59,18 @@ function getOneChannel(channel_id, callback) {
 					user_new : bodyObj[i]["user_new"],
 					user_active : bodyObj[i]["user_active"],
 					r_second_u : bodyObj[i]["r_second_u"],
-					r_second_u_per : (parseFloat(bodyObj[i]["r_second_u"])*100/parseFloat(bodyObj[i-1]["user_new"])).toFixed(2)+'%'
+					r_second_u_per : (parseFloat(bodyObj[i]["r_second_u"])*100/parseFloat(bodyObj[i-1]["user_new"])).toFixed(2)+'%',
 					mo_req_time : bodyObj[i]["mo_req_time"],
 					mo_req_money : bodyObj[i]["mo_req_money"],
 					mo_req_user : bodyObj[i]["mo_req_user"],
 					mo_success_time : bodyObj[i]["mo_success_time"],
 					mo_success_money : bodyObj[i]["mo_success_money"],
 					mo_success_user : bodyObj[i]["mo_success_user"],
-					mr_time : bodyObj[i]["mr_time"],new_mr_money :
+					mr_time : bodyObj[i]["mr_time"],
+					new_mr_money : bodyObj[i]["new_mr_money"],
 					mr_money : bodyObj[i]["mr_money"],
 					mr_user : bodyObj[i]["mr_user"],
-					new_mr_money : (parseFloat(bodyObj[i]["mr_money"])/parseFloat(bodyObj[i]["user_new"])).toFixed(2)+'%'
+					new_mr_money : (parseFloat(bodyObj[i]["mr_money"])/parseFloat(bodyObj[i]["user_new"])).toFixed(2)+'%',
 					r_seven_2 : bodyObj[i]["r_seven_2"],
 					r_thirty_2 : bodyObj[i]["r_thirty_2"],
 					r_thirty_m : bodyObj[i]["r_thirty_m"]

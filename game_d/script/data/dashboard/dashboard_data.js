@@ -309,6 +309,8 @@ exports.getLastFeedback = getLastFeedback;
  * 114.119.39.150:1703/data/event/dayreport/mermaidask/20160129 [美人鱼][v]
  * 114.119.39.150:1703/data/event/dayreport/bankrupt/20160129 [破产][v]
  * 114.119.39.150:1703/data/event/dayreport/fishinfo/20160129 [鱼群][v]
+ * 114.119.39.150:1703/data/event/dayreport/exp/distribution/20160314 [人物等级][v]
+ * 114.119.39.150:1703/data/event/dayreport/turntable/20160315 [转盘抽奖][v]
  */
  function getEventUserInfo(typeStr, dayStr, callback) {
      var options = {

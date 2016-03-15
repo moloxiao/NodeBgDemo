@@ -12,12 +12,10 @@
 				<th>序号</th>
 				<th>日期</th>
 				<th>用户等级</th>
-				<th>活跃用户数</th>
-				<th>活跃占比</th>
-				<th>活跃累计占比</th>
+				<th>累计用户数</th>
 				<th>新增用户数</th>
 				<th>新增占比</th>
-				<th>新增累计</th>
+				<th>累计新增占比</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,10 +23,8 @@
 				<tr>
 					<td>{{id}}</td>
 					<td>{{day}}</td>
-					<td>{{user_level}}</td>
+					<td>{{exp_level}}</td>
 					<td>{{active_user}}</td>
-					<td>{{active_user_per}}</td>
-					<td>{{active_user_all_per}}</td>
 					<td>{{new_user}}</td>
 					<td>{{new_user_per}}</td>
 					<td>{{new_user_all_per}}</td>
@@ -38,6 +34,8 @@
 	</table>
 	<a download="fk.csv" href="#" onclick="return ExcellentExport.csv(this, 'datatable');">导出为:CSV</a>
 	<div class="alert alert-info" role="alert">
+				<p>新增占比=当前等级新增玩家/今天总新增玩家</p>
+				<p>活跃用户统计的是有记录以来所有用户，并且统计的是当前最新用户等级</p>
 				<p>2016-03-14 增加用户统计页面</p>
 	</div>
 </div>

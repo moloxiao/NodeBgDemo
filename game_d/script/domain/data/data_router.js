@@ -199,8 +199,8 @@ router.get( '/event/dayreport/userlevelgroup', function(req, res) {
 		key_day = day;
 	}
 	(function(key_day){
-		event_logic.getTurrentlevelgroup(day, function(turrentlevelgroupInfo) {
-			res.render('data/event/dayreport/userevelgroup', { key_day : key_day, userlevelgroupInfo : userlevelgroupInfo});
+		event_logic.getUserlevelgroup(day, function(userlevelgroupInfo) {
+			res.render('data/event/dayreport/userlevelgroup', { key_day : key_day, userlevelgroupInfo : userlevelgroupInfo});
 		});
 	})(key_day);
 });
