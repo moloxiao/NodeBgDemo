@@ -52,7 +52,6 @@ function getOneChannel(channel_id, callback) {
 			var bodyObj = JSON.parse(body);
 			var i = 0;
 			for(i=0; i<bodyObj.length;i++) {
-
 				item = {
 					id : i+1,
 					day : bodyObj[i]["day"],
@@ -60,7 +59,7 @@ function getOneChannel(channel_id, callback) {
 					user_new : bodyObj[i]["user_new"],
 					user_active : bodyObj[i]["user_active"],
 					r_second_u : bodyObj[i]["r_second_u"],
-					r_second_u_per : i == 0 ? 0 : (parseFloat(bodyObj[i]["r_second_u"])*100/parseFloat(bodyObj[i-1]["user_new"])).toFixed(2)+'%',
+					r_second_u_per : i == 0 ? 0 : (parseFloat(bodyObj[i-1]["r_second_u"])*100/parseFloat(bodyObj[i]["user_new"])).toFixed(2)+'%',
 					mo_req_time : bodyObj[i]["mo_req_time"],
 					mo_req_money : bodyObj[i]["mo_req_money"],
 					mo_req_user : bodyObj[i]["mo_req_user"],
