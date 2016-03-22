@@ -46,7 +46,7 @@ function getUserInfo(user_id, key_q_type, callback) {
 						real_price : bodyObj[i]["real_price"],
 						order_id : bodyObj[i]["order_id"],
 						third_order_id : bodyObj[i]["third_order_id"],
-						third_type : parseInt(bodyObj[i]["sky_type"]) == 1 ? '微信' : '斯凯',
+						third_type : parseInt(bodyObj[i]["third_type"]) == 1 ? '微信' : '斯凯',
 						channel_id : bodyObj[i]["channel_id"],
 						create_time : bodyObj[i]["create_time"],
 						third_time : bodyObj[i]["third_time"]
