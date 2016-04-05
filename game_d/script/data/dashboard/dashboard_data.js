@@ -1,14 +1,16 @@
 var request = require('request');
 var crypto = require('crypto');
-var APIKEY = '14bba4b760b80073b064569a4087d3c6';
-var URL_HEAD_TBULOOK = 'http://106.75.135.78:1703';
+var p_config = require('../../../private_config/server.json');
+
+var APIKEY = p_config.APIKEY;
+var URL_HEAD_TBULOOK = p_config.URL_HEAD_TBULOOK;
 var urlencode=require('urlencode');
 
 //========================================
 // 用户信息-开始
 
 function getDashboardUserInfo(username, callback) {
-    // http://114.119.39.150:1703/user/login/guest@tallbigup.com
+    // URL_HEAD_TBULOOK/user/login/guest@tallbigup.com
     var options = {
         url : URL_HEAD_TBULOOK + '/user/login/' + username,
         timeout : 2000,
@@ -61,8 +63,8 @@ function reqDashboardNewUserInfo(username, passwd, salt, reqinfo, callback) {
 
 /**
  * 获取当前签到配置
- * http://114.119.39.150:1703/config/sign/current
- * http://114.119.39.150:1701/sign/config
+ * URL_HEAD_TBULOOK/config/sign/current
+ * URL_HEAD_TBULOOK/sign/config
  */
 function getSignCurrentConfig(callback) {
     var options = {
@@ -85,8 +87,8 @@ function getSignCurrentConfig(callback) {
 
 /**
  * 更新当前签到配置
- * 114.119.39.150:1703/config/sign/update/:newSignConfig
- * 114.119.39.150:1703/config/sign/update/:newSignConfig
+ * URL_HEAD_TBULOOK/config/sign/update/:newSignConfig
+ * URL_HEAD_TBULOOK/config/sign/update/:newSignConfig
  */
 function updateSignConfig(newSignConfig, callback) {
     var options = {
@@ -115,8 +117,8 @@ function updateSignConfig(newSignConfig, callback) {
 
 /**
  * 获取当前签到配置
- * http://114.119.39.150:1703/config/mo/paypoint
- * http://114.119.39.150:1703/config/mo/paypoint
+ * URL_HEAD_TBULOOK/config/mo/paypoint
+ * URL_HEAD_TBULOOK/config/mo/paypoint
  */
 function getPaypoint(callback) {
     var options = {
@@ -139,8 +141,8 @@ function getPaypoint(callback) {
 
 /**
  * 获取当前签到配置
- * http://114.119.39.150:1703/config/mo/payevent
- * http://114.119.39.150:1703/config/mo/payevent
+ * URL_HEAD_TBULOOK/config/mo/payevent
+ * URL_HEAD_TBULOOK/config/mo/payevent
  */
 function getPayevent(callback) {
     var options = {
@@ -163,9 +165,9 @@ function getPayevent(callback) {
 
 /**
  * 获取普通事件点统计信息
- * http://114.119.39.150:1703/config/commonevent/current
- * http://114.119.39.150:1703/config/commonevent/current
- * http://114.119.39.150:1703/config/commonevent/current
+ * URL_HEAD_TBULOOK/config/commonevent/current
+ * URL_HEAD_TBULOOK/config/commonevent/current
+ * URL_HEAD_TBULOOK/config/commonevent/current
  */
 function getCommonevent(callback) {
     var options = {
@@ -198,8 +200,8 @@ exports.getCommonevent = getCommonevent;
 
 /**
  * 获取渠道日报
- * http://114.119.39.150:1703/data/channel/dayreport/:day
- * http://114.119.39.150:1703/data/channel/dayreport/20160120
+ * URL_HEAD_TBULOOK/data/channel/dayreport/:day
+ * URL_HEAD_TBULOOK/data/channel/dayreport/20160120
  */
 function getChannelDayreport(day, callback) {
     var options = {
@@ -229,8 +231,8 @@ exports.getChannelDayreport = getChannelDayreport;
 
 /**
  * 获取渠道日报
- * http://114.119.39.150:1703/data/channel/dayreport/onechannel/:channel_id
- * http://114.119.39.150:1703/data/channel/dayreport/onechannel/tad_ma_1
+ * URL_HEAD_TBULOOK/data/channel/dayreport/onechannel/:channel_id
+ * URL_HEAD_TBULOOK/data/channel/dayreport/onechannel/tad_ma_1
  */
 function getOneChannel(channel_id, callback) {
     var options = {
@@ -264,8 +266,8 @@ exports.getOneChannel = getOneChannel;
 
 /**
  * 获取最近30条 用户反馈
- * http://114.119.39.150:1703/help/feedback
- * http://114.119.39.150:1703/help/feedback
+ * URL_HEAD_TBULOOK/help/feedback
+ * URL_HEAD_TBULOOK/help/feedback
  */
 function getLastFeedback(callback) {
     var options = {
@@ -301,16 +303,16 @@ exports.getLastFeedback = getLastFeedback;
 
 /**
  * 逻辑查询
- * 114.119.39.150:1703/data/event/dayreport/:type/:day
- * 114.119.39.150:1703/data/event/dayreport/turrentlevel/20160129 [炮台][v]
- * 114.119.39.150:1703/data/event/dayreport/skilluse/20160129 [技能使用][v]
- * 114.119.39.150:1703/data/event/dayreport/presented/20160129 [赠送][v]
- * 114.119.39.150:1703/data/event/dayreport/pagechange/20160129 [页面跳转][v]
- * 114.119.39.150:1703/data/event/dayreport/mermaidask/20160129 [美人鱼][v]
- * 114.119.39.150:1703/data/event/dayreport/bankrupt/20160129 [破产][v]
- * 114.119.39.150:1703/data/event/dayreport/fishinfo/20160129 [鱼群][v]
- * 114.119.39.150:1703/data/event/dayreport/exp/distribution/20160314 [人物等级][v]
- * 114.119.39.150:1703/data/event/dayreport/turntable/20160315 [转盘抽奖][v]
+ * URL_HEAD_TBULOOK/data/event/dayreport/:type/:day
+ * URL_HEAD_TBULOOK/data/event/dayreport/turrentlevel/20160129 [炮台][v]
+ * URL_HEAD_TBULOOK/data/event/dayreport/skilluse/20160129 [技能使用][v]
+ * URL_HEAD_TBULOOK/data/event/dayreport/presented/20160129 [赠送][v]
+ * URL_HEAD_TBULOOK/data/event/dayreport/pagechange/20160129 [页面跳转][v]
+ * URL_HEAD_TBULOOK/data/event/dayreport/mermaidask/20160129 [美人鱼][v]
+ * URL_HEAD_TBULOOK/data/event/dayreport/bankrupt/20160129 [破产][v]
+ * URL_HEAD_TBULOOK/data/event/dayreport/fishinfo/20160129 [鱼群][v]
+ * URL_HEAD_TBULOOK/data/event/dayreport/exp/distribution/20160314 [人物等级][v]
+ * URL_HEAD_TBULOOK/data/event/dayreport/turntable/20160315 [转盘抽奖][v]
  */
  function getEventUserInfo(typeStr, dayStr, callback) {
      var options = {
@@ -343,8 +345,8 @@ exports.updateSignConfig = updateSignConfig;
 
 /**
  * 获取最近30条 用户反馈
- * http://114.119.39.150:1703/data/pay/dayreport/:day
- * http://114.119.39.150:1703/data/pay/dayreport/20160204
+ * http://URL_HEAD_TBULOOK/data/pay/dayreport/:day
+ * http://URL_HEAD_TBULOOK/data/pay/dayreport/20160204
  */
 function getPayDayreport(dayStr, callback) {
     var options = {
@@ -370,8 +372,8 @@ exports.getPayDayreport = getPayDayreport;
 
 /**
  * 查询某个用户的mo信息
- * http://114.119.39.150:1703/data/pay/dayreport/user/mo/user_id
- * http://114.119.39.150:1703/data/pay/dayreport/user/mo/17562
+ * http://URL_HEAD_TBULOOK/data/pay/dayreport/user/mo/user_id
+ * http://URL_HEAD_TBULOOK/data/pay/dayreport/user/mo/17562
  */
 function getUserMoInfo(user_id, callback) {
     var options = {
@@ -397,8 +399,8 @@ exports.getUserMoInfo = getUserMoInfo;
 
 /**
  * 查询某个用户的mr信息
- * http://114.119.39.150:1703/data/pay/dayreport/user/mr/user_id
- * http://114.119.39.150:1703/data/pay/dayreport/user/mr/17562
+ * http://URL_HEAD_TBULOOK/data/pay/dayreport/user/mr/user_id
+ * http://URL_HEAD_TBULOOK/data/pay/dayreport/user/mr/17562
  */
 function getUserMrInfo(user_id, callback) {
     var options = {
@@ -425,8 +427,8 @@ exports.getUserMrInfo = getUserMrInfo;
 //
 /**
  * 查询某个用户的页面跳转信息
- * http://114.119.39.150:1703/data/event/dayreport/user/pagechange/:user_id
- * http://114.119.39.150:1703/data/event/dayreport/user/pagechange/17569
+ * http://URL_HEAD_TBULOOK/data/event/dayreport/user/pagechange/:user_id
+ * http://URL_HEAD_TBULOOK/data/event/dayreport/user/pagechange/17569
  */
 function getUserPagechangeInfo(user_id, callback) {
     var options = {
@@ -452,8 +454,8 @@ exports.getUserPagechangeInfo = getUserPagechangeInfo;
 
 /**
  * 查询某个用户的游戏信息
- * http://114.119.39.150:1703/data/event/dayreport/user/gameinfo/:user_id
- * http://114.119.39.150:1703/data/event/dayreport/user/gameinfo/17569
+ * http://URL_HEAD_TBULOOK/data/event/dayreport/user/gameinfo/:user_id
+ * http://URL_HEAD_TBULOOK/data/event/dayreport/user/gameinfo/17569
  */
 function getUserGameInfo(user_id, callback) {
     var options = {
@@ -478,8 +480,8 @@ exports.getUserGameInfo = getUserGameInfo;
 
 /**
  * 查询某个用户的游戏信息
- * http://114.119.39.150:1703/data/event/dayreport/user/register/user_id
- * http://114.119.39.150:1703/data/event/dayreport/user/register/19023
+ * http://URL_HEAD_TBULOOK/data/event/dayreport/user/register/user_id
+ * http://URL_HEAD_TBULOOK/data/event/dayreport/user/register/19023
  */
 function getUserRegisterInfo(user_id, callback) {
     var options = {
