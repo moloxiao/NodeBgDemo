@@ -1,7 +1,7 @@
 var request = require('request');
 var crypto = require('crypto');
 var APIKEY = '14bba4b760b80073b064569a4087d3c6';
-var URL_HEAD_TBULOOK = 'http://114.119.39.150:1703';
+var URL_HEAD_TBULOOK = 'http://106.75.135.78:1703';
 var urlencode=require('urlencode');
 
 //========================================
