@@ -24,7 +24,7 @@ router.get( '/channel/dayreport', function(req, res) {
 });
 
 router.get( '/channel/dayreport/onechannel/', function(req, res) {
-	var channel_id = 'tad_ma_1';
+	var channel_id = 'duomeng01';
 	var key_channel_id = channel_id;
 	if(req.query.channel_id != undefined && req.query.channel_id != null && req.query.channel_id.length > 0) {
 		channel_id = req.query.channel_id;
@@ -32,6 +32,18 @@ router.get( '/channel/dayreport/onechannel/', function(req, res) {
 	}
 	channel_logic.getOneChannel(channel_id, function(channel_dayreport) {
 		res.render('data/channel/onechannel', { key_channel_id : key_channel_id, channel_dayreport : channel_dayreport});
+	});
+});
+
+router.get( '/channel/dayreport/onechanneluserinfo/', function(req, res) {
+	var channel_id = 'duomeng01';
+	var key_channel_id = channel_id;
+	if(req.query.channel_id != undefined && req.query.channel_id != null && req.query.channel_id.length > 0) {
+		channel_id = req.query.channel_id;
+		key_channel_id = channel_id;
+	}
+	channel_logic.getOneChannel(channel_id, function(channel_dayreport) {
+		res.render('data/channel/onechanneluserinfo', { key_channel_id : key_channel_id, channel_dayreport : channel_dayreport});
 	});
 });
 

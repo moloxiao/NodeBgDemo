@@ -2,7 +2,7 @@
   "name": "game_dashboard",
   "version": "1.0.0",
   "description": "Game Dashboard",
-  "main": "app.js",
+  "main": "catchfish_dashboard.js",
   "author": "molo.xiao@tallbigup.com",
   "license": "ISC",
   "dependencies": {

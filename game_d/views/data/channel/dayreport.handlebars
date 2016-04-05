@@ -1,15 +1,20 @@
 <p><a href="/" role="button">首页</a>-><a href="/map/data" role="button">数据报表</a>->渠道日报</p>
 <script type="text/javascript">
-function open_win()
+function open_onechannel()
 {
 window.open("/data/channel/dayreport/onechannel")
+}
+function open_onechanneluserinfo()
+{
+window.open("/data/channel/dayreport/onechanneluserinfo")
 }
 </script>
 <div class="page-header">
 	<form class="form-search">
 	<p>day[YYYYMMDD]</p><input type="text" value={{key_day}} name="day" class="search-query">
 	<button type="submit" class="btn btn-primary">按日查询</button>
-	<input type=button value="单渠道查询" class="btn btn-primary" onclick="open_win()" />
+	<input type=button value="单渠道查询" class="btn btn-primary" onclick="open_onechannel()" />
+	<input type=button value="单渠道留存" class="btn btn-primary" onclick="open_onechanneluserinfo()" />
 	</form>
 </div>
 <div class="page-header">
