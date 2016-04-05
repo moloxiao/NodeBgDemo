@@ -16,5 +16,5 @@ node_modules
 Thumbs.db
 
 # ignore server config
-./game_d/private_config
+private_config
 
